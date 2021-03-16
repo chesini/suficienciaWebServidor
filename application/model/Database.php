@@ -1,6 +1,6 @@
 <?php
 
-namespace suficienciaWebServidor;
+namespace App\Model;
 
 class Database {
     public function __construct(){

@@ -1,0 +1,14 @@
+{
+    "name": "leandrochesini/suficiencia-web-servidor",
+    "description": "Projeto desenvolvido como Requisito para a Sufici\u0000ncia da disciplina de Desenvolvimento Web-Servidor na UTFPR-PG",
+    "type": "project",
+    "autoload": {
+        "psr-4": {"suficienciaWebServidor\\": "application/"}
+    },
+    "authors": [
+        {
+            "name": "chesini",
+            "email": "leandrochesi@hotmail.com"
+        }
+    ]
+}

@@ -6,8 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
-    'Symfony\\Component\\Routing\\' => array($vendorDir . '/symfony/routing'),
-    'Src\\' => array($baseDir . '/src'),
+    'Routes\\' => array($baseDir . '/routes'),
     'App\\' => array($baseDir . '/application'),
 );

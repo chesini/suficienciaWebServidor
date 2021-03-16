@@ -4,7 +4,11 @@ namespace App\View;
 
 class Login {
     public function __construct() {
-        include __DIR__. '/html/login.html';
+    }
+
+    public function show() {
+
+        return file_get_contents(__DIR__. '/html/login.html');
     }
 
 }

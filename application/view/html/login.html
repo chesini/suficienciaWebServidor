@@ -2,14 +2,15 @@
 
 <body>
     <header>Login de Usuário</header>
-    <form method="post" action="login/">
+    <form method="post" action="realizar_login">
         <label for="usuario">Usuário:</label>
-        <input type="text" name="usuario" id="usuario" placeholder="email@example.com" />
-
+        <input type="text" name="usuario" id="usuario" placeholder="email@example.com" 
+            pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*"
+            title="Digite um endereço de e-mail válido!" />
         <br/>
 
         <label for="senha">Senha:</label>
-        <input type="password" name="senha" id="senha" />
+        <input type="password" name="senha" id="senha" title="O campo não pode estar em branco!" />
 
         <button type="submit">Acessar</button>
     </form>

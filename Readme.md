@@ -1,4 +1,12 @@
-1. Para a criação da Base de Dados no MySQL via CLI:
+1. Para execução no SO Windows:
+  - Com o XAMPP e o Git instalados na máquina, acesse o diretório htdocs com um terminal
+  - Faça o clone do repositório:
+    ```bash
+    >git clone https://github.com/chesini/suficienciaWebServidor
+    ```
+  - Acesse o projeto pela URL: http://localhost/suficienciaWebServidor
+
+2. Para a criação da Base de Dados no MySQL via CLI:
 ```sql
 CREATE DATABASE IF NOT EXISTS estagio 
 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
@@ -47,6 +55,8 @@ CREATE TABLE estagio.login (
     descricao TEXT NOT NULL , 
     PRIMARY KEY (idlogin)
 ) ENGINE = InnoDB;
-
-
 ```
+
+3. Usuários e senhas cadastrados para teste:
+  - leandrochesi@hotmail.com -> 1234
+  - adm@estagio.com.br -> abcde

@@ -21,11 +21,11 @@ class Login {
             $database = new Database();
             $buscaUsuario = $database->select('login', "idlogin, nomeresponsavel", array('login = ' => $usuario, ' AND senha = ' => $senha));
             
-            if(!$buscaUsuario)
+            if(!is_array($buscaUsuario) || !isset($buscaUsuario[0]['idlogin']))
                 return false;
             
-            $_SESSION['idlogin'] = $buscaUsuario['idlogin'];
-            $_SESSION['nomeresponsavel'] = $buscaUsuario['nomeresponsavel'];
+            $_SESSION['idlogin'] = $buscaUsuario[0]['idlogin'];
+            $_SESSION['nomeresponsavel'] = $buscaUsuario[0]['nomeresponsavel'];
             $_SESSION['logado'] = true;
 
             return $_SESSION['logado'];

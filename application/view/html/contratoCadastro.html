@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<body>
+    <header>
+        <p>
+            <a href="/">Home</a>
+        </p><br/>
+        Cadastro de Contratos de Estágio
+    </header>
+    
+    <form method="post" action="/contratoestagio/cadastro/novo">
+        <label for="regacademico">RA:</label>
+        <input type="text" name="regacademico" id="regacademico" placeholder="123456789"
+            pattern="\d{1,15}"
+            title="Digite somente números!" />
+        <br/>
+        <!-- <label for="nomeestagiario">Nome do Estagiário:</label>
+        <input type="text" name="nomeestagiario" id="nomeestagiario" placeholder="João Maria da Silva" />
+        <br/> -->
+        <label for="idempresa">Empresa:</label>
+        <select name="idempresa" id="idempresa">
+            <option value="0" selected>Selecione..</option>
+        </select>
+        <br/>
+        <label for="datainicio">Data de Início:</label>
+        <input type="text" name="datainicio" id="datainicio" placeholder="DD/MM/AAAA"
+            pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[12][0-9]{3}$"
+            title="Digite a data no formato DD/MM/AAAA" />
+        <br/>
+        <label for="datafim">Data de Fim:</label>
+        <input type="text" name="datafim" id="datafim" placeholder="DD/MM/AAAA"
+            pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[12][0-9]{3}$"
+            title="Digite a data no formato DD/MM/AAAA" />
+        <br/>
+        <label for="cargahoraria">Carga Horária:</label>
+        <input type="text" name="cargahoraria" id="cargahoraria" placeholder="120"
+            pattern="\d{1,15}"
+            title="Digite somente números!"  />
+        <br/>
+        <label for="descricao">Descrição:</label>
+        <input type="text" name="descricao" id="descricao" placeholder="(Opcional)" />
+        <br/>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <form method="post" action="/login/realizar_logout">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+<script type = "text/javascript">
+    function preencherSelect(dados) {
+        dados = JSON.parse(dados);
+        for(var i = 0; i < dados.length;  i++) {
+            var opt = document.createElement("option");
+            opt.value = dados[i].idempresa;
+            opt.innerHTML = dados[i].nomeempresa;
+            document.getElementById("idempresa").appendChild(opt);
+        }
+
+    }
+    
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            preencherSelect(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", "/empresa/lista/busca", false);
+    xmlHttp.send(null);
+
+    
+
+
+</script>
+
+</html>

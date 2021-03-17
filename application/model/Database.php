@@ -27,11 +27,27 @@ class Database {
             return true;
 
         } catch(Exception $exc) {
+            var_dump($exc);
+            exit;
             return false;
         }
     }
 
-    public function delete($tabela, $colunas, $valores) {
+    public function delete($tabela, $coluna, $valor) {
+        try {
+            
+            $valor = is_int($valor) ? $valor : '\'' . $valor . '\'';
+            
+            $delete = "DELETE FROM {$tabela} WHERE $coluna = $valor;";
+
+            $query = $this->conexao->prepare($delete);
+
+            $query->execute();
+            return true;
+
+        } catch(Exception $exc) {
+            return false;
+        }
 
     }
 
@@ -40,14 +56,28 @@ class Database {
         try {
             $select = "SELECT {$colunasRetorno} FROM {$tabela} WHERE TRUE AND ";
             $where = "";
+            if(count($condicoes) <= 0)
+                $where = "1=1";
+            
             foreach($condicoes as $condicao => $valor) {
                 $where .= $condicao . (is_int($valor) ? $valor : '\'' . $valor . '\'');
             }
-
             $query = $this->conexao->prepare($select . $where);
 
             $query->execute();
-            return $query->fetch(PDO::FETCH_ASSOC);
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch(Exception $exc) {
+            $this->tratarErro($exc);
+        }
+    }
+
+    public function query($sql) {
+        try {
+            $query = $this->conexao->prepare($sql);
+
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
 
         } catch(Exception $exc) {
             $this->tratarErro($exc);

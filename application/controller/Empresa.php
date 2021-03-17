@@ -13,8 +13,17 @@ class Empresa {
         $this->model = new mEmpresa();
     }
 
-    public function showLista() {
-        echo $this->view->showLista();
+    public function showLista($lista = []) {
+        echo $this->view->showLista($lista);
+    }
+
+    public function getLista($filtro = " TRUE ") {
+        $lista = $this->model->getEmpresaLista($filtro);
+
+        if(!isset($lista[0]))
+            $lista = [$lista];
+
+        return $lista;
     }
 
     public function showCadastro() {
@@ -24,7 +33,21 @@ class Empresa {
     public function cadastrarEmpresa($param) {
         try {
             $database = new mEmpresa();
-            $param['telefone'] = intval($param['telefone']);
+            
+            if(strlen($param['nomeempresa']) <= 1)
+                return false;
+            if(strlen($param['responsavelempresa']) <= 1)
+                return false;
+            if(strlen($param['telefone']) <= 1)
+                return false;
+            if(strlen($param['email']) <= 1)
+                return false;
+            
+            $empresaExiste = $database->getEmpresaNome($param['nomeempresa']);
+            if(is_array($empresaExiste) && count($empresaExiste) > 0)
+                return false;
+
+            $param['telefone'] = intval(str_replace(["(", ")", "-", " "], "", $param['telefone']));
             return $database->insertEmpresa($param);
 
         } catch (Exception $exc) {

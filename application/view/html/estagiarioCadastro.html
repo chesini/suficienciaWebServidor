@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<body>
+    <header>
+        <p>
+            <a href="/">Home</a>
+        </p><br/>
+        Cadastro de Estagiário
+    </header>
+    <form method="post" action="/estagiario/cadastro/novo">
+        <label for="nomeestagiario">Nome do Estagiário:</label>
+        <input type="text" name="nomeestagiario" id="nomeestagiario" placeholder="João Maria da Silva" />
+        <br/>
+        <label for="regacademico">RA:</label>
+        <input type="text" name="regacademico" id="regacademico" placeholder="123456789"
+            pattern="\d{1,15}"
+            title="Digite somente números!" />
+        <br/>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" placeholder="email@example.com"
+            pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*"
+            title="Digite um endereço de e-mail válido!" />
+        <br/>
+        <label for="telefone">Telefone:</label>
+        <input type="text" name="telefone" id="telefone" placeholder="(42) 98765-4321"
+            pattern="^1\d\d(\d\d)?$|^0800 ?\d{3} ?\d{4}$|^(\(0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d\) ?|0?([1-9a-zA-Z][0-9a-zA-Z])?[1-9]\d[ .-]?)?(9|9[ .-])?[2-9]\d{3}[ .-]?\d{4}"
+            title="Digite um número de telefone válido!" />
+        <br/>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <form method="post" action="/login/realizar_logout">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+
+</html>

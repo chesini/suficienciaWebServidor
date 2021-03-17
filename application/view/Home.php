@@ -7,7 +7,7 @@ class Home {
         if(!$_SESSION['logado']) {
             ob_clean();
             header('Status: 401 Unauthorized', false, 401);
-            header('Location: login/sem_permissao');
+            header('Location: /login/sem_permissao');
         }
     }
 

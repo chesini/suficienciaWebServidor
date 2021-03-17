@@ -44,7 +44,7 @@ class ContratoEstagio {
                         <tbody>
             ";
     
-            if(count($lista) > 1) {
+            if(count($lista) >= 1) {
                 foreach($lista as $dadosContrato) {
                     $a .= " <tr> 
                                 <td>{$dadosContrato['situacao']}</td>

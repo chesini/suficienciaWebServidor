@@ -4,7 +4,19 @@
     ```bash
     >git clone https://github.com/chesini/suficienciaWebServidor
     ```
-  - Acesse o projeto pela URL: http://localhost/suficienciaWebServidor
+  - Adicione o seguinte trecho no arquivo da pasta xampp/apache/conf/extra/httpd-vhosts.conf
+  ```bash
+    <VirtualHost *:80>
+        DocumentRoot "C:/xampp/htdocs/suficienciaWebServidor"
+        <Directory C:/xampp/htdocs/suficienciaWebServidor>
+            AllowOverride All
+            Order Allow,Deny
+            Allow from All
+        </Directory>
+        ErrorLog "logs/suficienciaWebServidor"
+    </VirtualHost>
+  ```
+  - Acesse o projeto pela URL: http://localhost/
 
 2. Para a criação da Base de Dados no MySQL via CLI:
 ```sql
@@ -55,6 +67,10 @@ CREATE TABLE estagio.login (
     descricao TEXT NOT NULL , 
     PRIMARY KEY (idlogin)
 ) ENGINE = InnoDB;
+
+INSERT INTO login (login, senha, nomeresponsavel, descricao) VALUES ('leandrochesi@hotmail.com', '1234', 'Leandro Chesini', 'dev');
+INSERT INTO login (login, senha, nomeresponsavel, descricao) VALUES ('adm@estagio.com.br', 'abcde', 'Administrador do Sistema', 'admin');
+
 ```
 
 3. Usuários e senhas cadastrados para teste:
